@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="jumbotron" id="jumbo" style="background-color:#444242">
+    <div class="container">
+        <img class="img-responsive" src="~/Content/makerlabwhitefixed.png" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-7 col-md-6 col-sm-12">
+        <h1 style="color:#800000;font-size:500%">Welcome…</h1>
+        <p class="lead col-lg-offset-1" style="font-size:150%">
+            to the official webpage for the Rose-Hulman MakerLab. MakerLab members have a passion for making new things and want to share their knowledge by working with others in a collaborative environment. The goal of the MakerLab is to provide students with the necessary skills, resources, and expertise to make their ideas come into reality!
+        </p>
+    </div>
+    <div class="col-lg-5 col-md-6 col-sm-12" style="height: 350px; background-color: #b0a7a7; border-radius: 25px 25px; padding: 10px 10px 10px 10px; border:10px solid white;">
+       <h2>Recent Photos</h2>
+            <div id="AddCarousel" class="carousel slide" data-ride="carousel" data-wrap="true" >
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#AddCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#AddCarousel" data-slide-to="1"></li>
+                    <li data-target="#AddCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="img-rounded" src="~/Content/LeapFashion.jpg" alt="Leap Motion Dress" style="width:450px; max-height:250px;"/>
+                        <div class="carousel-caption">
+                            <h3>Leap Dress</h3>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="img-rounded" src="~/Content/IMG_20150303_144357849 (1).jpg" style="width:450px; max-height:250px;" />
+                        <div class="carousel-caption">
+                            <h3>Barstool Racer</h3>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="img-rounded" src="~/Content/20140903_174855.jpg" alt="Banner" style="width:450px; max-height:250px;" />
+                        <div class="carousel-caption">
+                            <h3>Join our MakerLab!</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Controls -->
+                @* <a class="left carousel-control" href="#carousel-example-generic" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>*@
+            </div> <!-- Carousel -->
+     
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6" style="height: 350px; background-color: #b0a7a7; border-radius: 25px 25px; padding: 10px 10px 10px 10px; border:10px solid white;">
+        <h3>Upcoming Events</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Event</td>
+                    <td>Time</td>
+                    <td>Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Informational Meeting</td>
+                    <td>5:30 PM</td>
+                    <td>March 18, 2015</td>
+                </tr>
+            </tbody>            
+        </table>
+    </div>
+    <div class="col-lg-6 col-md-6" style="height: 350px; background-color: #b0a7a7; border-radius: 25px 25px; padding: 10px 10px 10px 10px; border:10px solid white;">
+        <h3>Recently Updated Projects</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Project Name</td>
+                    <td>Last Update</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Barstool Racer</td>
+                    <td>3/18/15</td>
+                </tr>
+                <tr>
+                    <td>Jasper</td>
+                    <td>3/18/15</td>
+                </tr>
+                <tr>
+                    <td>Power Glove</td>
+                    <td>3/18/15</td>
+                </tr>
+                <tr>
+                    <td>Leap Dress</td>
+                    <td>3/18/15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

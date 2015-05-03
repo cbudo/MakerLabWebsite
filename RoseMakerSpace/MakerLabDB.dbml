@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="333_MakerLab" Class="MakerLabDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=titan.csse.rose-hulman.edu;Initial Catalog=333_MakerLab;Persist Security Info=True;User ID=budocf" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="_333_MakerLabConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.External_Resource" Member="External_Resources">
+    <Type Name="External_Resource">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Location" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Access_Level" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="External_Resource_Project_Ext_Resource" Member="Project_Ext_Resources" ThisKey="ID" OtherKey="Resource_ID" Type="Project_Ext_Resource" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Leader" Member="Leaders">
+    <Type Name="Leader">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position_Held" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Position_Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Student_Leader" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student_Training" Member="Student_Trainings">
+    <Type Name="Student_Training">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MakerLab_Tool_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Student_Training" Member="Student_Training1" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Association Name="Maker_Lab_Tool_Student_Training" Member="Maker_Lab_Tool" ThisKey="MakerLab_Tool_ID" OtherKey="ID" Type="Maker_Lab_Tool" IsForeignKey="true" />
+      <Association Name="Student_Student_Training" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Maker_Lab_Part" Member="Maker_Lab_Parts">
+    <Type Name="Maker_Lab_Part">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Buy_More_at" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Purchase_Loc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Last_Price" Type="System.Decimal" DbType="Decimal(7,2)" CanBeNull="true" />
+      <Association Name="Maker_Lab_Part_Project_MLPart" Member="Project_MLParts" ThisKey="ID" OtherKey="MLPart_ID" Type="Project_MLPart" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Maker_Lab_Tool" Member="Maker_Lab_Tools">
+    <Type Name="Maker_Lab_Tool">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Maker_Lab_Tool_Student_Training" Member="Student_Trainings" ThisKey="ID" OtherKey="MakerLab_Tool_ID" Type="Student_Training" />
+      <Association Name="Maker_Lab_Tool_Project_MLTool" Member="Project_MLTools" ThisKey="ID" OtherKey="MLTool_ID" Type="Project_MLTool" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project" Member="Projects">
+    <Type Name="Project">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Project_Project_Ext_Resource" Member="Project_Ext_Resources" ThisKey="ID" OtherKey="Project_ID" Type="Project_Ext_Resource" />
+      <Association Name="Project_Project_MLPart" Member="Project_MLParts" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLPart" />
+      <Association Name="Project_Project_MLTool" Member="Project_MLTools" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLTool" />
+      <Association Name="Project_Student_Project" Member="Student_Projects" ThisKey="ID" OtherKey="Project_ID" Type="Student_Project" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project_Ext_Resource" Member="Project_Ext_Resources">
+    <Type Name="Project_Ext_Resource">
+      <Column Name="Resource_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Project_Project_Ext_Resource" Member="Project" ThisKey="Project_ID" OtherKey="ID" Type="Project" IsForeignKey="true" />
+      <Association Name="External_Resource_Project_Ext_Resource" Member="External_Resource" ThisKey="Resource_ID" OtherKey="ID" Type="External_Resource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project_MLPart" Member="Project_MLParts">
+    <Type Name="Project_MLPart">
+      <Column Name="MLPart_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Maker_Lab_Part_Project_MLPart" Member="Maker_Lab_Part" ThisKey="MLPart_ID" OtherKey="ID" Type="Maker_Lab_Part" IsForeignKey="true" />
+      <Association Name="Project_Project_MLPart" Member="Project" ThisKey="Project_ID" OtherKey="ID" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Project_MLTool" Member="Project_MLTools">
+    <Type Name="Project_MLTool">
+      <Column Name="MLTool_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Maker_Lab_Tool_Project_MLTool" Member="Maker_Lab_Tool" ThisKey="MLTool_ID" OtherKey="ID" Type="Maker_Lab_Tool" IsForeignKey="true" />
+      <Association Name="Project_Project_MLTool" Member="Project" ThisKey="Project_ID" OtherKey="ID" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Skill" Member="Skills">
+    <Type Name="Skill">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Skill_Student_Skill" Member="Student_Skills" ThisKey="ID" OtherKey="Student_Skill1" Type="Student_Skill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Leader" Member="Leaders" ThisKey="StudentID" OtherKey="Student_ID" Type="Leader" />
+      <Association Name="Student_Student_Training" Member="Student_Trainings" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Training" />
+      <Association Name="Student_Student_Project" Member="Student_Projects" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Project" />
+      <Association Name="Student_Student_Skill" Member="Student_Skills" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Skill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student_Project" Member="Student_Projects">
+    <Type Name="Student_Project">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last_update" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="Project_Student_Project" Member="Project" ThisKey="Project_ID" OtherKey="ID" Type="Project" IsForeignKey="true" />
+      <Association Name="Student_Student_Project" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student_Skill" Member="Student_Skills">
+    <Type Name="Student_Skill">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Student_Skill" Member="Student_Skill1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Student_Student_Skill" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
+      <Association Name="Skill_Student_Skill" Member="Skill" ThisKey="Student_Skill1" OtherKey="ID" Type="Skill" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

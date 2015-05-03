@@ -15,7 +15,7 @@ namespace RoseMakerSpace.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Meet the leadership team!";
 
             return View();
         }

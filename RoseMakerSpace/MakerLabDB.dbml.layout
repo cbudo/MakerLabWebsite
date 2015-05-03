@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 15.25" name="MakerLabDB">
+  <DataContextMoniker Name="/MakerLabDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9a7d47fe-1e77-4cde-9eeb-277d3f2efa1d" absoluteBounds="3.75, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MakerLabDBDataContext/External_Resource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e2e044a-676d-49e5-acfd-3bea91f002f6" absoluteBounds="3.765, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dee5c6d9-7aa7-4b8b-990f-f73eff26a458" absoluteBounds="3.5, 10.25, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Leader" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76136566-3fe1-4db9-94c6-2ef3314d3ef5" absoluteBounds="3.515, 10.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c99a5ce0-064e-4670-8a4a-c3d96f19a46d" absoluteBounds="6.5, 8.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Student_Training" />
+      <nestedChildShapes>
+        <elementListCompartment Id="830e4978-8be2-4999-b8cb-65bf43f557c5" absoluteBounds="6.515, 8.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6baee7a8-fc2d-4435-82de-0e52d37f8666" absoluteBounds="6.75, 13, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Maker_Lab_Part" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eeb3bea7-66f4-401b-89aa-21ce095647f3" absoluteBounds="6.765, 13.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9b809ac9-21af-486f-a63e-f52605154611" absoluteBounds="3.75, 13.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Maker_Lab_Tool" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73edcc1d-be72-4adb-92da-43ea39d3c40c" absoluteBounds="3.765, 13.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="15263994-83d8-433c-b13a-3671ee232403" absoluteBounds="3.75, 4.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Project" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ebcb6c6c-9203-4952-adc0-56f6a5b4b551" absoluteBounds="3.765, 4.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13833a57-483b-4fb8-87cb-7606dd371b9e" absoluteBounds="6.875, 2.875, 2, 1.193992513020834">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Project_Ext_Resource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c2fd3de-a8d2-4c9d-94dd-772fece7c139" absoluteBounds="6.89, 3.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="73fcff91-a4a7-4b1a-9184-630cf9d10419" absoluteBounds="9.5, 5.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Project_MLPart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="863faa9c-5d48-4e5a-bca8-49c6fe608ebc" absoluteBounds="9.515, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="782dd704-4c83-4cfa-afce-9e1714635f4c" absoluteBounds="6.5, 10.875, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Project_MLTool" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bbaf2df9-712d-4896-9c89-9c1824b385ea" absoluteBounds="6.515, 11.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b4eb2ae-697b-4548-929b-30965f054fbb" absoluteBounds="0.75, 5.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Skill" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2dbd0c51-c7ff-46a9-bc69-a27b85c7e6a2" absoluteBounds="0.765, 5.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a52a6634-c46d-444f-941b-9de2526fffff" absoluteBounds="0.75, 8.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Student" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13832040-0055-4ef1-a55f-3f6fdeaea851" absoluteBounds="0.765, 8.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3fdfc822-56fc-4bbf-9ef4-1c9a1913bc41" absoluteBounds="6.5, 5.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Student_Project" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bf5dcdb-7074-4e3e-8bb1-66d5c507dcb4" absoluteBounds="6.515, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ca70872-d084-4c9e-8020-8a9ba95dc452" absoluteBounds="3.5, 7.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Student_Skill" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7928de64-0e8c-4b1c-8359-4a518661cd03" absoluteBounds="3.515, 7.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.65625 : 13.375); (5.65625 : 9.19639322916667); (6.16666666666667 : 9.19639322916667 : JumpStart); (6.33333333333333 : 9.19639322916667 : JumpEnd); (6.5 : 9.19639322916667)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Maker_Lab_Tool/Maker_Lab_Tool_Student_Training" />
+      <nodes>
+        <classShapeMoniker Id="9b809ac9-21af-486f-a63e-f52605154611" />
+        <classShapeMoniker Id="c99a5ce0-064e-4670-8a4a-c3d96f19a46d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 4.78125); (8.71875 : 4.78125); (8.71875 : 4.06899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Project_Ext_Resource" />
+      <nodes>
+        <classShapeMoniker Id="15263994-83d8-433c-b13a-3671ee232403" />
+        <classShapeMoniker Id="13833a57-483b-4fb8-87cb-7606dd371b9e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 1.9999995); (7.875 : 1.9999995); (7.875 : 2.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/External_Resource/External_Resource_Project_Ext_Resource" />
+      <nodes>
+        <classShapeMoniker Id="9a7d47fe-1e77-4cde-9eeb-277d3f2efa1d" />
+        <classShapeMoniker Id="13833a57-483b-4fb8-87cb-7606dd371b9e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 13.9815991210937); (10.5 : 13.9815991210937); (10.5 : 6.56899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Maker_Lab_Part/Maker_Lab_Part_Project_MLPart" />
+      <nodes>
+        <classShapeMoniker Id="6baee7a8-fc2d-4435-82de-0e52d37f8666" />
+        <classShapeMoniker Id="73fcff91-a4a7-4b1a-9184-630cf9d10419" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 5.109377); (10.5 : 5.109377); (10.5 : 5.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Project_MLPart" />
+      <nodes>
+        <classShapeMoniker Id="15263994-83d8-433c-b13a-3671ee232403" />
+        <classShapeMoniker Id="73fcff91-a4a7-4b1a-9184-630cf9d10419" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6875025 : 13.375); (5.6875025 : 11.8838932291667); (6.5 : 11.8838932291667)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Maker_Lab_Tool/Maker_Lab_Tool_Project_MLTool" />
+      <nodes>
+        <classShapeMoniker Id="9b809ac9-21af-486f-a63e-f52605154611" />
+        <classShapeMoniker Id="782dd704-4c83-4cfa-afce-9e1714635f4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.609375 : 5.82859537760417); (5.609375 : 11.7600910872396); (6.5 : 11.7600910872396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Project_MLTool" />
+      <nodes>
+        <classShapeMoniker Id="15263994-83d8-433c-b13a-3671ee232403" />
+        <classShapeMoniker Id="782dd704-4c83-4cfa-afce-9e1714635f4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 9.7612939453125); (1.75 : 10.9431469726562); (3.5 : 10.9431469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Leader" />
+      <nodes>
+        <classShapeMoniker Id="a52a6634-c46d-444f-941b-9de2526fffff" />
+        <classShapeMoniker Id="dee5c6d9-7aa7-4b8b-990f-f73eff26a458" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 8.85144287109375); (4.41666666666667 : 8.85144287109375 : JumpStart); (4.58333333333333 : 8.85144287109375 : JumpEnd); (5.52604166666667 : 8.85144287109375 : JumpStart); (5.69270833333333 : 8.85144287109375 : JumpEnd); (6.16666666666667 : 8.85144287109375 : JumpStart); (6.33333333333333 : 8.85144287109375 : JumpEnd); (6.5 : 8.85144287109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Training" />
+      <nodes>
+        <classShapeMoniker Id="a52a6634-c46d-444f-941b-9de2526fffff" />
+        <classShapeMoniker Id="c99a5ce0-064e-4670-8a4a-c3d96f19a46d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 5.60179768880208); (6.5 : 5.60179768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Student_Project" />
+      <nodes>
+        <classShapeMoniker Id="15263994-83d8-433c-b13a-3671ee232403" />
+        <classShapeMoniker Id="3fdfc822-56fc-4bbf-9ef4-1c9a1913bc41" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.47884308723958); (5.52604166666667 : 9.47884308723958 : JumpStart); (5.73958333333333 : 9.47884308723958 : JumpEnd); (6.25 : 9.47884308723958); (6.25 : 8.125); (7.5 : 8.125); (7.5 : 6.7612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Project" />
+      <nodes>
+        <classShapeMoniker Id="a52a6634-c46d-444f-941b-9de2526fffff" />
+        <classShapeMoniker Id="3fdfc822-56fc-4bbf-9ef4-1c9a1913bc41" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.16514297916667); (4.5 : 9.16514297916667); (4.5 : 8.56899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Skill" />
+      <nodes>
+        <classShapeMoniker Id="a52a6634-c46d-444f-941b-9de2526fffff" />
+        <classShapeMoniker Id="7ca70872-d084-4c9e-8020-8a9ba95dc452" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.2300439453125); (3.59375 : 6.2300439453125); (3.59375 : 7.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MakerLabDBDataContext/Skill/Skill_Student_Skill" />
+      <nodes>
+        <classShapeMoniker Id="7b4eb2ae-697b-4548-929b-30965f054fbb" />
+        <classShapeMoniker Id="7ca70872-d084-4c9e-8020-8a9ba95dc452" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

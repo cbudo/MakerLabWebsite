@@ -294,6 +294,8 @@
     <Content Include="Views\Resources\FAQ.cshtml" />
     <Content Include="Views\Project\Browse.cshtml" />
     <Content Include="Views\Project\Project.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

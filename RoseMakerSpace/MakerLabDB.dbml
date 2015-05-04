@@ -11,14 +11,6 @@
       <Association Name="External_Resource_Project_Ext_Resource" Member="Project_Ext_Resources" ThisKey="ID" OtherKey="Resource_ID" Type="Project_Ext_Resource" />
     </Type>
   </Table>
-  <Table Name="dbo.Leader" Member="Leaders">
-    <Type Name="Leader">
-      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Position_Held" Type="System.String" DbType="Char(20)" CanBeNull="true" />
-      <Column Name="Position_Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Student_Leader" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Student_Training" Member="Student_Trainings">
     <Type Name="Student_Training">
       <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -26,6 +18,14 @@
       <Column Name="Student_Training" Member="Student_Training1" Type="System.String" DbType="Char(30)" CanBeNull="true" />
       <Association Name="Maker_Lab_Tool_Student_Training" Member="Maker_Lab_Tool" ThisKey="MakerLab_Tool_ID" OtherKey="ID" Type="Maker_Lab_Tool" IsForeignKey="true" />
       <Association Name="Student_Student_Training" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Leader" Member="Leaders">
+    <Type Name="Leader">
+      <Column Name="Student_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position_Held" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Position_Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Student_Leader" Member="Student" ThisKey="Student_ID" OtherKey="StudentID" Type="Student" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Maker_Lab_Part" Member="Maker_Lab_Parts">
@@ -54,6 +54,9 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Association Name="Project_Project_Ext_Resource" Member="Project_Ext_Resources" ThisKey="ID" OtherKey="Project_ID" Type="Project_Ext_Resource" />
       <Association Name="Project_Project_MLPart" Member="Project_MLParts" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLPart" />
       <Association Name="Project_Project_MLTool" Member="Project_MLTools" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLTool" />
@@ -96,8 +99,8 @@
       <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="Student_Leader" Member="Leaders" ThisKey="StudentID" OtherKey="Student_ID" Type="Leader" />
       <Association Name="Student_Student_Training" Member="Student_Trainings" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Training" />
+      <Association Name="Student_Leader" Member="Leaders" ThisKey="StudentID" OtherKey="Student_ID" Type="Leader" />
       <Association Name="Student_Student_Project" Member="Student_Projects" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Project" />
       <Association Name="Student_Student_Skill" Member="Student_Skills" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Skill" />
     </Type>

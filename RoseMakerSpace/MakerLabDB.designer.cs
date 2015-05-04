@@ -88,19 +88,19 @@ namespace RoseMakerSpace
 			}
 		}
 		
-		public System.Data.Linq.Table<Leader> Leaders
-		{
-			get
-			{
-				return this.GetTable<Leader>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Student_Training> Student_Trainings
 		{
 			get
 			{
 				return this.GetTable<Student_Training>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Leader> Leaders
+		{
+			get
+			{
+				return this.GetTable<Leader>();
 			}
 		}
 		
@@ -367,69 +367,6 @@ namespace RoseMakerSpace
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Leader")]
-	public partial class Leader
-	{
-		
-		private System.Nullable<int> _Student_ID;
-		
-		private string _Position_Held;
-		
-		private System.Nullable<int> _Position_Year;
-		
-		public Leader()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int")]
-		public System.Nullable<int> Student_ID
-		{
-			get
-			{
-				return this._Student_ID;
-			}
-			set
-			{
-				if ((this._Student_ID != value))
-				{
-					this._Student_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position_Held", DbType="Char(20)")]
-		public string Position_Held
-		{
-			get
-			{
-				return this._Position_Held;
-			}
-			set
-			{
-				if ((this._Position_Held != value))
-				{
-					this._Position_Held = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position_Year", DbType="Int")]
-		public System.Nullable<int> Position_Year
-		{
-			get
-			{
-				return this._Position_Year;
-			}
-			set
-			{
-				if ((this._Position_Year != value))
-				{
-					this._Position_Year = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student_Training")]
 	public partial class Student_Training
 	{
@@ -488,6 +425,69 @@ namespace RoseMakerSpace
 				if ((this._Student_Training1 != value))
 				{
 					this._Student_Training1 = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Leader")]
+	public partial class Leader
+	{
+		
+		private System.Nullable<int> _Student_ID;
+		
+		private string _Position_Held;
+		
+		private System.Nullable<int> _Position_Year;
+		
+		public Leader()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int")]
+		public System.Nullable<int> Student_ID
+		{
+			get
+			{
+				return this._Student_ID;
+			}
+			set
+			{
+				if ((this._Student_ID != value))
+				{
+					this._Student_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position_Held", DbType="Char(20)")]
+		public string Position_Held
+		{
+			get
+			{
+				return this._Position_Held;
+			}
+			set
+			{
+				if ((this._Position_Held != value))
+				{
+					this._Position_Held = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position_Year", DbType="Int")]
+		public System.Nullable<int> Position_Year
+		{
+			get
+			{
+				return this._Position_Year;
+			}
+			set
+			{
+				if ((this._Position_Year != value))
+				{
+					this._Position_Year = value;
 				}
 			}
 		}
@@ -799,6 +799,12 @@ namespace RoseMakerSpace
 		
 		private string _Image_Gallery;
 		
+		private System.Nullable<System.DateTime> _DateAdded;
+		
+		private System.Nullable<System.DateTime> _LastModified;
+		
+		private System.Nullable<short> _STATUS;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -811,6 +817,12 @@ namespace RoseMakerSpace
     partial void OnDescriptionChanged();
     partial void OnImage_GalleryChanging(string value);
     partial void OnImage_GalleryChanged();
+    partial void OnDateAddedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateAddedChanged();
+    partial void OnLastModifiedChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastModifiedChanged();
+    partial void OnSTATUSChanging(System.Nullable<short> value);
+    partial void OnSTATUSChanged();
     #endregion
 		
 		public Project()
@@ -894,6 +906,66 @@ namespace RoseMakerSpace
 					this._Image_Gallery = value;
 					this.SendPropertyChanged("Image_Gallery");
 					this.OnImage_GalleryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateAdded", DbType="Date")]
+		public System.Nullable<System.DateTime> DateAdded
+		{
+			get
+			{
+				return this._DateAdded;
+			}
+			set
+			{
+				if ((this._DateAdded != value))
+				{
+					this.OnDateAddedChanging(value);
+					this.SendPropertyChanging();
+					this._DateAdded = value;
+					this.SendPropertyChanged("DateAdded");
+					this.OnDateAddedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastModified
+		{
+			get
+			{
+				return this._LastModified;
+			}
+			set
+			{
+				if ((this._LastModified != value))
+				{
+					this.OnLastModifiedChanging(value);
+					this.SendPropertyChanging();
+					this._LastModified = value;
+					this.SendPropertyChanged("LastModified");
+					this.OnLastModifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="SmallInt")]
+		public System.Nullable<short> STATUS
+		{
+			get
+			{
+				return this._STATUS;
+			}
+			set
+			{
+				if ((this._STATUS != value))
+				{
+					this.OnSTATUSChanging(value);
+					this.SendPropertyChanging();
+					this._STATUS = value;
+					this.SendPropertyChanged("STATUS");
+					this.OnSTATUSChanged();
 				}
 			}
 		}

@@ -11,7 +11,9 @@ namespace RoseMakerSpace.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            return View();
+            MakerLabDBDataContext db = new MakerLabDBDataContext();
+            var projects = db.Projects.Where(p => p.STATUS == 1);
+            return View(projects);
         }
         public ActionResult Project(int? ProjectKey)
         {
@@ -27,6 +29,20 @@ namespace RoseMakerSpace.Controllers
         public ActionResult Browse()
         {
             return View();
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public void Create(Project project)
+        {
+            MakerLabDBDataContext db = new MakerLabDBDataContext();
+            project.DateAdded = DateTime.Now.Date;
+            project.STATUS = 1;
+            project.LastModified = DateTime.Now;
+            db.Projects.InsertOnSubmit(project);
+            db.SubmitChanges();
         }
     }
 }

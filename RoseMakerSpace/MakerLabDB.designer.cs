@@ -183,6 +183,13 @@ namespace RoseMakerSpace
 				return this.GetTable<Student_Skill>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.new_project")]
+		public int new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, description, image_Gallery, dateAdded, lastModified, aCTIVE);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.External_Resource")]
@@ -803,7 +810,7 @@ namespace RoseMakerSpace
 		
 		private System.Nullable<System.DateTime> _LastModified;
 		
-		private System.Nullable<short> _STATUS;
+		private System.Nullable<short> _Active;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -821,8 +828,8 @@ namespace RoseMakerSpace
     partial void OnDateAddedChanged();
     partial void OnLastModifiedChanging(System.Nullable<System.DateTime> value);
     partial void OnLastModifiedChanged();
-    partial void OnSTATUSChanging(System.Nullable<short> value);
-    partial void OnSTATUSChanged();
+    partial void OnActiveChanging(System.Nullable<short> value);
+    partial void OnActiveChanged();
     #endregion
 		
 		public Project()
@@ -830,7 +837,7 @@ namespace RoseMakerSpace
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -950,22 +957,22 @@ namespace RoseMakerSpace
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STATUS", DbType="SmallInt")]
-		public System.Nullable<short> STATUS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="SmallInt")]
+		public System.Nullable<short> Active
 		{
 			get
 			{
-				return this._STATUS;
+				return this._Active;
 			}
 			set
 			{
-				if ((this._STATUS != value))
+				if ((this._Active != value))
 				{
-					this.OnSTATUSChanging(value);
+					this.OnActiveChanging(value);
 					this.SendPropertyChanging();
-					this._STATUS = value;
-					this.SendPropertyChanged("STATUS");
-					this.OnSTATUSChanged();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}

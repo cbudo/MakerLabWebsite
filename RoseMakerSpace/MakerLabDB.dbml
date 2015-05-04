@@ -50,13 +50,13 @@
   </Table>
   <Table Name="dbo.Project" Member="Projects">
     <Type Name="Project">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DateAdded" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="STATUS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Active" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Association Name="Project_Project_Ext_Resource" Member="Project_Ext_Resources" ThisKey="ID" OtherKey="Project_ID" Type="Project_Ext_Resource" />
       <Association Name="Project_Project_MLPart" Member="Project_MLParts" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLPart" />
       <Association Name="Project_Project_MLTool" Member="Project_MLTools" ThisKey="ID" OtherKey="Project_ID" Type="Project_MLTool" />
@@ -122,4 +122,13 @@
       <Association Name="Skill_Student_Skill" Member="Skill" ThisKey="Student_Skill1" OtherKey="ID" Type="Skill" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.new_project" Method="new_project">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Image_Gallery" Parameter="image_Gallery" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="DateAdded" Parameter="dateAdded" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LastModified" Parameter="lastModified" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ACTIVE" Parameter="aCTIVE" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

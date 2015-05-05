@@ -16,8 +16,6 @@ CREATE PROCEDURE new_project
 AS
 SET NOCOUNT ON
 
-
-
 INSERT INTO [PROJECT] ([Name], [Description], [Image_Gallery], [DateAdded], [LastModified], [ACTIVE])
 	VALUES (@Name, @Description, @Image_Gallery, @DateAdded, @LastModified, @ACTIVE)
 	

@@ -12,7 +12,7 @@ namespace RoseMakerSpace.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            var projects = db.Projects.Where(p => p.Active != 0);
+            var projects = db.get_Active_projects();
             return View(projects);
         }
         public ActionResult Project(int? ProjectKey)
@@ -41,7 +41,7 @@ namespace RoseMakerSpace.Controllers
             project.LastModified = DateTime.Now;
             db.new_project(project.Name, project.Description, project.Image_Gallery, project.DateAdded, project.LastModified, 1);
             db.SubmitChanges();
-            var projects = db.Projects.Where(p => p.Active != 0);
+            var projects = db.get_Active_projects();
             return View("Index",projects);
         }
         public ActionResult Details(int id)

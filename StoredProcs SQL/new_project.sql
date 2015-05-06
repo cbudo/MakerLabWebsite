@@ -11,15 +11,13 @@ CREATE PROCEDURE new_project
  @Image_Gallery NVARCHAR(MAX) = NULL,
  @DateAdded DATE = NULL,
  @LastModified DATETIME = NULL,
- @STATUS SMALLINT = 1)
+ @ACTIVE SMALLINT = 1)
 
 AS
 SET NOCOUNT ON
 
-
-
-INSERT INTO [PROJECT] ([Name], [Description], [Image_Gallery], [DateAdded], [LastModified], [STATUS])
-	VALUES (@Name, @Description, @Image_Gallery, @DateAdded, @LastModified, @STATUS)
+INSERT INTO [PROJECT] ([Name], [Description], [Image_Gallery], [DateAdded], [LastModified], [ACTIVE])
+	VALUES (@Name, @Description, @Image_Gallery, @DateAdded, @LastModified, @ACTIVE)
 	
 
 --ERROR Stuff

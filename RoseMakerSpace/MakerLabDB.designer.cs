@@ -184,6 +184,14 @@ namespace RoseMakerSpace
 			}
 		}
 		
+		public System.Data.Linq.Table<Project_MLTool_info> Project_MLTool_infos
+		{
+			get
+			{
+				return this.GetTable<Project_MLTool_info>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.new_project")]
 		public int new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE)
 		{
@@ -210,6 +218,20 @@ namespace RoseMakerSpace
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Get_current_studentsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_projects")]
+		public ISingleResult<get_projectsResult> get_projects([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), aCTIVE, name, dateAdded, lastModified);
+			return ((ISingleResult<get_projectsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetTools_usedOn_Project")]
+		public ISingleResult<GetTools_usedOn_ProjectResult> GetTools_usedOn_Project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), projectID);
+			return ((ISingleResult<GetTools_usedOn_ProjectResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -1506,6 +1528,105 @@ namespace RoseMakerSpace
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Project_MLTool_info")]
+	public partial class Project_MLTool_info
+	{
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private System.Nullable<int> _MLTool_ID;
+		
+		private System.Nullable<int> _Project_ID;
+		
+		public Project_MLTool_info()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLTool_ID", DbType="Int")]
+		public System.Nullable<int> MLTool_ID
+		{
+			get
+			{
+				return this._MLTool_ID;
+			}
+			set
+			{
+				if ((this._MLTool_ID != value))
+				{
+					this._MLTool_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project_ID", DbType="Int")]
+		public System.Nullable<int> Project_ID
+		{
+			get
+			{
+				return this._Project_ID;
+			}
+			set
+			{
+				if ((this._Project_ID != value))
+				{
+					this._Project_ID = value;
+				}
+			}
+		}
+	}
+	
 	public partial class get_Active_projectsResult
 	{
 		
@@ -1755,7 +1876,6 @@ namespace RoseMakerSpace
 		{
 		}
 		
-        [DisplayName("First Name")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string FirstName
 		{
@@ -1772,7 +1892,6 @@ namespace RoseMakerSpace
 			}
 		}
 		
-        [DisplayName("Last Name")]
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string LastName
 		{
@@ -1820,8 +1939,7 @@ namespace RoseMakerSpace
 				}
 			}
 		}
-
-        [DisplayName("Class Year")]
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
 		public System.Nullable<short> ClassYear
 		{
@@ -1834,6 +1952,238 @@ namespace RoseMakerSpace
 				if ((this._ClassYear != value))
 				{
 					this._ClassYear = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_projectsResult
+	{
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private string _Image_Gallery;
+		
+		private System.Nullable<System.DateTime> _DateAdded;
+		
+		private System.Nullable<System.DateTime> _LastModified;
+		
+		private System.Nullable<short> _ACTIVE;
+		
+		public get_projectsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image_Gallery", DbType="NVarChar(MAX)")]
+		public string Image_Gallery
+		{
+			get
+			{
+				return this._Image_Gallery;
+			}
+			set
+			{
+				if ((this._Image_Gallery != value))
+				{
+					this._Image_Gallery = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateAdded", DbType="Date")]
+		public System.Nullable<System.DateTime> DateAdded
+		{
+			get
+			{
+				return this._DateAdded;
+			}
+			set
+			{
+				if ((this._DateAdded != value))
+				{
+					this._DateAdded = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastModified
+		{
+			get
+			{
+				return this._LastModified;
+			}
+			set
+			{
+				if ((this._LastModified != value))
+				{
+					this._LastModified = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVE", DbType="SmallInt")]
+		public System.Nullable<short> ACTIVE
+		{
+			get
+			{
+				return this._ACTIVE;
+			}
+			set
+			{
+				if ((this._ACTIVE != value))
+				{
+					this._ACTIVE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetTools_usedOn_ProjectResult
+	{
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private System.Nullable<int> _MLTool_ID;
+		
+		private System.Nullable<int> _Project_ID;
+		
+		public GetTools_usedOn_ProjectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MLTool_ID", DbType="Int")]
+		public System.Nullable<int> MLTool_ID
+		{
+			get
+			{
+				return this._MLTool_ID;
+			}
+			set
+			{
+				if ((this._MLTool_ID != value))
+				{
+					this._MLTool_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Project_ID", DbType="Int")]
+		public System.Nullable<int> Project_ID
+		{
+			get
+			{
+				return this._Project_ID;
+			}
+			set
+			{
+				if ((this._Project_ID != value))
+				{
+					this._Project_ID = value;
 				}
 			}
 		}

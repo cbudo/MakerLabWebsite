@@ -124,6 +124,15 @@
       <Association Name="Student_Student_Skill" Member="Student_Skills" ThisKey="StudentID" OtherKey="Student_ID" Type="Student_Skill" />
     </Type>
   </Table>
+  <Table Name="dbo.Project_MLTool_info" Member="Project_MLTool_infos">
+    <Type Name="Project_MLTool_info">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MLTool_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.new_project" Method="new_project">
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
@@ -161,6 +170,31 @@
       <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_projects" Method="get_projects">
+    <Parameter Name="ACTIVE" Parameter="aCTIVE" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="DateAdded" Parameter="dateAdded" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LastModified" Parameter="lastModified" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="get_projectsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ACTIVE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTools_usedOn_Project" Method="GetTools_usedOn_Project">
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTools_usedOn_ProjectResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MLTool_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

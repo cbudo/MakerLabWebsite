@@ -79,6 +79,17 @@ namespace RoseMakerSpace.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    MakerLabDBDataContext db = new MakerLabDBDataContext();
+                    Student user = db.Students.Where(m => m.Email == model.Email).First();
+                    if(user!=null)
+                    {
+                        TempData["Student"] = true;
+                        TempData["User"] = user;
+                    }
+                    else
+                    {
+                        TempData["Student"] = false;
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -153,6 +164,18 @@ namespace RoseMakerSpace.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                if(model.Email.Contains("@rose-hulman.edu"))
+                {
+                    MakerLabDBDataContext db = new MakerLabDBDataContext();
+                    Student studentModel = new Student();
+                    studentModel.Email = model.Email;
+                    studentModel.LastName = model.LastName;
+                    studentModel.FirstName = model.FirstName;
+                    studentModel.ClassYear = model.ClassYear;
+                    studentModel.StudentID = model.IDno;
+                    db.Students.InsertOnSubmit(studentModel);
+                    db.SubmitChanges();
+                }
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -261,25 +284,6 @@ namespace RoseMakerSpace.Controllers
             }
             AddErrors(result);
             return View();
-        }
-
-        //
-        // GET: /Account/ResetPasswordConfirmation
-        [AllowAnonymous]
-        public ActionResult ResetPasswordConfirmation()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/ExternalLogin
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
-        {
-            // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
         //

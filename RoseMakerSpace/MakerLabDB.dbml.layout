@@ -102,14 +102,14 @@
         <classShapeMoniker Id="d14952be-d104-44bf-8086-0d12564d24ce" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.65625 : 10.875); (5.65625 : 10.3017468847656); (6.04166666666667 : 10.3017468847656 : JumpStart); (6.20833333333333 : 10.3017468847656 : JumpEnd); (6.5 : 10.3017468847656)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.65625 : 10.875); (5.65625 : 10.3017468847656); (6.5 : 10.3017468847656)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Project_MLPart" />
       <nodes>
         <classShapeMoniker Id="cd450900-5e50-4ac2-a485-05ad71f33b2a" />
         <classShapeMoniker Id="d14952be-d104-44bf-8086-0d12564d24ce" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.7612939453125); (3.125 : 3.1362939453125); (6.125 : 3.1362939453125); (6.125 : 6.25); (6.5 : 6.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 2.6994429077524); (3.1875 : 3.1369429077524); (3.1875 : 7.22199625651042); (3.22916666666667 : 7.22199625651042 : JumpStart); (3.39583333333333 : 7.22199625651042 : JumpEnd); (5.54166416666667 : 7.22199625651042 : JumpStart); (5.70833083333333 : 7.22199625651042 : JumpEnd); (6.5 : 7.22199625651042)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/MakerLabDBDataContext/Maker_Lab_Tool/Maker_Lab_Tool_Project_MLTool" />
       <nodes>
         <classShapeMoniker Id="56950773-758d-447a-b57a-3962a982fcd0" />
@@ -123,14 +123,14 @@
         <classShapeMoniker Id="9e4c7dbb-ecad-4ddb-aec8-bef7ac3b8180" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.6249975 : 10.875); (5.6249975 : 5.69639322916667); (6.04166666666667 : 5.69639322916667 : JumpStart); (6.20833333333333 : 5.69639322916667 : JumpEnd); (6.5 : 5.69639322916667)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.6249975 : 10.875); (5.6249975 : 5.69639322916667); (6.5 : 5.69639322916667)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Project/Project_Student_Project" />
       <nodes>
         <classShapeMoniker Id="cd450900-5e50-4ac2-a485-05ad71f33b2a" />
         <classShapeMoniker Id="77acd562-edc8-4a4e-b6f2-ed1ba17daffb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.37591745577925); (3.125 : 7.00091745577925); (3.125 : 5.94490996880008); (3.50091745577925 : 5.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 7.37591745577925); (3.125 : 7.00091745577925); (3.125 : 5.94490996880008); (3.12857443490112 : 5.94133553389896 : JumpStart); (3.24642556509888 : 5.8234844037012 : JumpEnd); (3.50091745577925 : 5.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Skill/Skill_Student_Skill" />
       <nodes>
         <classShapeMoniker Id="7cd3043a-2472-429d-b01c-13103e44cfe7" />
@@ -143,33 +143,39 @@
         <elementListCompartment Id="872d26c3-4460-467d-aeda-a554464fd527" absoluteBounds="0.76500000000000012, 4.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 4.5); (3.125 : 4.125); (3.125 : 2.44597245898438); (3.5 : 2.44597245898438)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.5); (3.12857443490112 : 4.12142556509888 : JumpStart); (3.24642556509888 : 4.00357443490112 : JumpEnd); (3.375 : 3.875); (3.375 : 2.44597245898438); (3.5 : 2.44597245898438)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Training" />
       <nodes>
         <classShapeMoniker Id="bf7d6fcf-4f80-4a7f-b62a-a6a645b16f94" />
         <classShapeMoniker Id="171e9113-b067-40f8-b730-67f7dc52e5c4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.20959553570713); (3.06607443490112 : 6.52566997060825 : JumpStart); (3.18392556509888 : 6.64352110080601 : JumpEnd); (3.3125 : 6.77209553570713); (3.3125 : 9.06814697265625); (3.5 : 9.06814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.20959553570713); (3.06607443490112 : 6.52566997060825 : JumpStart); (3.24642556509888 : 6.70602110080601 : JumpEnd); (3.3125 : 6.77209553570713); (3.3125 : 9.06814697265625); (3.5 : 9.06814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Leader" />
       <nodes>
         <classShapeMoniker Id="bf7d6fcf-4f80-4a7f-b62a-a6a645b16f94" />
         <classShapeMoniker Id="27ab73bc-19c9-4abe-84ca-ff3975c98731" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.95419274050982); (5.54166416666667 : 5.95419274050982 : JumpStart); (5.70833083333333 : 5.95419274050982 : JumpEnd); (6.04166666666667 : 5.95419274050982 : JumpStart); (6.20833333333333 : 5.95419274050982 : JumpEnd); (7.5 : 5.95419274050982); (7.5 : 5.7612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.95419274050982); (3.10416666666667 : 5.95419274050982 : JumpStart); (3.27083333333333 : 5.95419274050982 : JumpEnd); (5.54166416666667 : 5.95419274050982 : JumpStart); (5.70833083333333 : 5.95419274050982 : JumpEnd); (7.5 : 5.95419274050982); (7.5 : 5.7612939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Project" />
       <nodes>
         <classShapeMoniker Id="bf7d6fcf-4f80-4a7f-b62a-a6a645b16f94" />
         <classShapeMoniker Id="77acd562-edc8-4a4e-b6f2-ed1ba17daffb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.06574875651042); (3.5 : 5.06574875651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.06574875651042); (3.10416666666667 : 5.06574875651042 : JumpStart); (3.27083333333333 : 5.06574875651042 : JumpEnd); (3.5 : 5.06574875651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MakerLabDBDataContext/Student/Student_Student_Skill" />
       <nodes>
         <classShapeMoniker Id="bf7d6fcf-4f80-4a7f-b62a-a6a645b16f94" />
         <classShapeMoniker Id="9c0ce538-854d-47d1-96d8-182b6536c030" />
       </nodes>
     </associationConnector>
+    <classShape Id="59be64be-c112-4ab9-8c9e-9a72c2556bd8" absoluteBounds="7, 1.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/MakerLabDBDataContext/Project_MLTool_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf1a39f0-977d-49dd-a5d2-cd0db2c56f94" absoluteBounds="7.015, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

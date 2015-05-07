@@ -21,7 +21,7 @@ namespace RoseMakerSpace.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("_333_MakerLabConnectionString", throwIfV1Schema: false)
         {
         }
 

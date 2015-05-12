@@ -72,24 +72,13 @@ namespace RoseMakerSpace.Controllers
             {
                 return View(model);
             }
-
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    MakerLabDBDataContext db = new MakerLabDBDataContext();
-                    Student user = db.Students.Where(m => m.Email == model.Email).First();
-                    if(user!=null)
-                    {
-                        TempData["Student"] = true;
-                        TempData["User"] = user;
-                    }
-                    else
-                    {
-                        TempData["Student"] = false;
-                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -164,7 +153,7 @@ namespace RoseMakerSpace.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if(model.Email.Contains("@rose-hulman.edu"))
+                if(model.Email.IndexOf("@rose-hulman.edu")>-1)
                 {
                     MakerLabDBDataContext db = new MakerLabDBDataContext();
                     Student studentModel = new Student();
@@ -173,6 +162,7 @@ namespace RoseMakerSpace.Controllers
                     studentModel.FirstName = model.FirstName;
                     studentModel.ClassYear = model.ClassYear;
                     studentModel.StudentID = model.IDno;
+                    db.AspNetUsers.Where(m => m.Email == model.Email).First().StudentIDFK = model.IDno;
                     db.Students.InsertOnSubmit(studentModel);
                     db.SubmitChanges();
                 }

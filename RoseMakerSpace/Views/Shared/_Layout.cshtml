@@ -23,9 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (TempData["Student"]!=null&&(bool)TempData["Student"])
+                    @if (RoseMakerSpace.Controllers.ExtFunctions.checkStudent())
                     {
-                        <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                        <li>@Html.ActionLink("Projects", "Index", "Project")</li>
                     }
                     <li>@Html.ActionLink("Resources", "Index", "Resources")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>

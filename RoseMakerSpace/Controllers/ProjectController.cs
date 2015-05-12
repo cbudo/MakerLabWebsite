@@ -8,41 +8,36 @@ namespace RoseMakerSpace.Controllers
 {
     public class ProjectController : Controller
     {
-            MakerLabDBDataContext db = new MakerLabDBDataContext();
+        MakerLabDBDataContext db = new MakerLabDBDataContext();
         // GET: Project
+        [Authorize]
         public ActionResult Index()
         {
-            var projects = db.get_Active_projects();
-            return View(projects);
-        }
-        public ActionResult Project(int? ProjectKey)
-        {
-            if(ProjectKey.HasValue)
+            if (ExtFunctions.checkStudent())
             {
-                var project = db.Projects.Where(c => c.ID == ProjectKey);
-                project.Cast<Models.ProjectModel>().ToList();
-                return View("Project", project.First());
+                var projects = db.get_Active_projects();
+                return View(projects);
             }
-            return View("Index");
+            return RedirectToAction("Index", "Home");
         }
-        public ActionResult Browse()
-        {
-            return View();
-        }
+        [Authorize]
         public ActionResult Create()
         {
-            return View();
+            if (ExtFunctions.checkStudent())
+                return View();
+            return RedirectToAction("Index", "Home");
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Project project)
         {
             project.DateAdded = DateTime.Now.Date;
-            
+
             project.LastModified = DateTime.Now;
             db.new_project(project.Name, project.Description, project.Image_Gallery, project.DateAdded, project.LastModified, 1);
             db.SubmitChanges();
             var projects = db.get_Active_projects();
-            return View("Index",projects);
+            return View("Index", projects);
         }
         public ActionResult Details(int id)
         {

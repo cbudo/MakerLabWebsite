@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExtFunctions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -213,12 +214,9 @@
     <Content Include="Content\MakerLabwhite.png" />
     <Content Include="Content\makerlabwhitefixed.png" />
     <Content Include="Content\officer pics\10399941_101522330815_5823105_n.jpg" />
-    <Content Include="Content\officer pics\10959985_10203462158692477_8719635076824464453_o.jpg" />
     <Content Include="Content\officer pics\156524_579201452097859_687221427_n.jpg" />
     <Content Include="Content\officer pics\1798512_779190605462477_3266157329717523680_n.jpg" />
     <Content Include="Content\officer pics\181453_10152818253965366_2117325315_n.jpg" />
-    <Content Include="Content\officer pics\26203_1156287926364_7767263_n.jpg" />
-    <Content Include="Content\officer pics\9783_10202354246211141_365786179587512469_n.jpg" />
     <Content Include="Content\officer pics\Elena_Chong_Loo.jpg" />
     <Content Include="Content\officer pics\pic1.jpg" />
     <Content Include="Content\officer pics\Tim With Sergey Brin.jpg.png" />
@@ -290,13 +288,12 @@
     <Content Include="Views\Resources\Index.cshtml" />
     <Content Include="Views\Resources\FAQ.cshtml" />
     <Content Include="Views\Project\Browse.cshtml" />
-    <Content Include="Views\Project\Project.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\AddSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

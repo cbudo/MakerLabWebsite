@@ -18,6 +18,13 @@ CREATE PROCEDURE add_student
 AS
 SET NOCOUNT ON
 
+IF (SELECT COUNT(StudentID) FROM Student WHERE StudentID = @Student_ID) <> 0
+BEGIN 
+	PRINT 'A student with @Student_ID ' + CONVERT(varchar(30), @Student_ID ) + ' already exists' 
+	RETURN 1
+END
+
+
 INSERT INTO dbo.Student (StudentID, Email, FirstName, LastName, ClassYear)
 VALUES (@Student_ID, @Email, @FirstName, @LastName, @ClassYear)
 

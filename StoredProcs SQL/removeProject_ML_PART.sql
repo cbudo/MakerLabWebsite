@@ -29,7 +29,7 @@ END
 
 IF (SELECT COUNT(@Project_ID) FROM Project_MLPart WHERE MLPart_ID = @MLPart_ID AND Project_ID = @Project_ID) = 0
 BEGIN 
-	PRINT 'The External Resource '  + CONVERT(varchar(30), @MLPart_ID ) + ' is not in the project '   + CONVERT(varchar(30), @Project_ID )
+	PRINT 'The ML Part '  + CONVERT(varchar(30), @MLPart_ID ) + ' is not in the project '   + CONVERT(varchar(30), @Project_ID )
 	RETURN 1
 END
 

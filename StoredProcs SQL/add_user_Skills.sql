@@ -14,12 +14,12 @@ SET NOCOUNT ON
 
 IF (SELECT COUNT(StudentID) FROM Student WHERE StudentID = @Student_ID) = 0
 BEGIN 
-	PRINT 'The Student_ID ' + + CONVERT(varchar(30), @Student_ID ) + ' does not exist' 
+	PRINT 'The Student_ID ' + CONVERT(varchar(30), @Student_ID ) + ' does not exist' 
 	RETURN 1
 END
 IF (SELECT COUNT(ID) FROM SKILL WHERE ID = @Skill_ID) = 0
 BEGIN 
-	PRINT 'The Skill_ID ' + + CONVERT(varchar(30), @Skill_ID ) + ' does not exist' 
+	PRINT 'The Skill_ID ' + CONVERT(varchar(30), @Skill_ID ) + ' does not exist' 
 	RETURN 1
 END
 IF (SELECT COUNT(Student_Skill) FROM Student_Skill WHERE Student_Skill = @Skill_ID AND Student_ID = @Student_ID) <> 0

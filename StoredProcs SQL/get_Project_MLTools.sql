@@ -11,14 +11,14 @@ CREATE PROCEDURE get_Project_MLTools
 AS
 SET NOCOUNT ON
 
-SELECT tool.Name, 1 AS [FLAG] 
+SELECT tool.Name, tool.ID, 1 AS [FLAG] 
 	FROM Maker_Lab_Tool tool 
 	JOIN Project_MLTool ON ID = MLTool_ID
 	WHERE Project_MLTool.Project_ID = @Project_ID
 
 UNION 
 
-SELECT tool.Name, 0 AS [FLAG] 
+SELECT tool.Name, tool.ID, 0 AS [FLAG] 
 	FROM Maker_Lab_Tool tool
 	WHERE ID NOT IN(
 		SELECT MLTool_ID FROM Project_MLTool

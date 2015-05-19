@@ -11,14 +11,14 @@ CREATE PROCEDURE get_Project_MLParts
 AS
 SET NOCOUNT ON
 
-SELECT part.Name, 1 AS [FLAG] 
+SELECT part.Name, part.ID, 1 AS [FLAG] 
 	FROM Maker_Lab_Part part 
 	JOIN Project_MLPart ON ID = MLPart_ID
 	WHERE Project_MLPart.Project_ID = @Project_ID
 
 UNION 
 
-SELECT part.Name, 0 AS [FLAG] 
+SELECT part.Name, part.ID, 0 AS [FLAG] 
 	FROM Maker_Lab_Part part
 	WHERE ID NOT IN(
 		SELECT MLPart_ID FROM  Project_MLPart

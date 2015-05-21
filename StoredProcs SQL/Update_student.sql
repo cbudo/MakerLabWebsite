@@ -51,8 +51,8 @@ UPDATE dbo.Student SET StudentID = @newStudent_ID
 WHERE StudentID = @OldStudentID
 
 --Student_Project
-UPDATE dbo.Student SET StudentID = @newStudent_ID
-WHERE StudentID = @OldStudentID
+UPDATE dbo.Student_Project SET Student_ID = @newStudent_ID
+WHERE Student_ID = @OldStudentID
 
 --Student_skill
 UPDATE dbo.Student_skill SET Student_ID = @newStudent_ID

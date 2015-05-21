@@ -16,7 +16,6 @@ namespace RoseMakerSpace.Controllers
 {
     public class ExtFunctions
     {
-
         public static bool checkStudent()
         {
             MakerLabDBDataContext db = new MakerLabDBDataContext();
@@ -37,7 +36,7 @@ namespace RoseMakerSpace.Controllers
                 }
                 else
                 {
-                    Student stu = db.Students.Where(m => m.Email == user.Identity.Name).First();
+                    var stu = db.get_Student_ByEmail(user.Identity.Name);
                     if (stu != null)
                     {
                         System.Web.HttpContext.Current.Session["Student"] = true;
@@ -56,6 +55,24 @@ namespace RoseMakerSpace.Controllers
             {
                 return false;
             }
+        }
+
+        internal static bool worksOnProject(int? id)
+        {
+            if (id.HasValue)
+            {
+                var user = HttpContext.Current.User;
+                MakerLabDBDataContext db = new MakerLabDBDataContext();
+                var stu = db.get_Student_ByEmail(user.Identity.Name).FirstOrDefault();
+                var projects = db.get_Students_projects(stu.StudentID);
+                if (projects.Any(m=>m.ID==id))
+                {
+                    return true;
+                }
+                return false;
+
+            }
+            return false;
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿@model RoseMakerSpace.Models.CreateStudentModel
+@{
+    ViewBag.Title = "CreateStudentAccount";
+}
+
+<h2>Create Student Account</h2>
+@using (Html.BeginForm("CreateStudentAccount", "Student", FormMethod.Post))
+{
+    @Html.HiddenFor(m=>m.Email)
+    <div id="studentInfo" class="col-lg-offset-1">
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.IDno, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.IDno, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.ClassYear, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ClassYear, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <input class="btn btn-default" name="btnSubmit" value="Submit" type="submit" />
+}

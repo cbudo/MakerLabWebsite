@@ -64,18 +64,6 @@ namespace RoseMakerSpace.Models
 
     public class RegisterViewModel
     {
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Display(Name = "Class Year")]
-        public short ClassYear { get; set; }
-
-        [Display(Name = "Student ID Number")]
-        public int IDno { get; set; }
-
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

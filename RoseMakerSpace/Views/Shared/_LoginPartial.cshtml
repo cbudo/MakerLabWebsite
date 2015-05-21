@@ -6,9 +6,18 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
+        @if (RoseMakerSpace.Controllers.ExtFunctions.checkStudent())
+        {
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "EditStudent", "Student", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { title = "Change Password" })
+            </li>
+        }
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }

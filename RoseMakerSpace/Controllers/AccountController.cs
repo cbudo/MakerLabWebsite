@@ -153,23 +153,16 @@ namespace RoseMakerSpace.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if(model.Email.IndexOf("@rose-hulman.edu")>-1)
-                {
-                    MakerLabDBDataContext db = new MakerLabDBDataContext();
-                    Student studentModel = new Student();
-                    studentModel.Email = model.Email;
-                    studentModel.LastName = model.LastName;
-                    studentModel.FirstName = model.FirstName;
-                    studentModel.ClassYear = model.ClassYear;
-                    studentModel.StudentID = model.IDno;
-                    db.AspNetUsers.Where(m => m.Email == model.Email).First().StudentIDFK = model.IDno;
-                    db.Students.InsertOnSubmit(studentModel);
-                    db.SubmitChanges();
-                }
+                
                 if (result.Succeeded)
                 {
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
+                    if(model.Email.IndexOf("@rose-hulman.edu")>-1)
+                    {
+                        return RedirectToAction("CreateStudentAccount", "Student", new { email = model.Email });
+                    }
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

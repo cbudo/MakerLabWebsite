@@ -250,10 +250,59 @@ namespace RoseMakerSpace
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.new_project")]
-		public int new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.add_student")]
+		public int add_student([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Student_ID", DbType="Int")] System.Nullable<int> student_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(25)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="NVarChar(MAX)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="NVarChar(MAX)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ClassYear", DbType="SmallInt")] System.Nullable<short> classYear)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, description, image_Gallery, dateAdded, lastModified, aCTIVE);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), student_ID, email, firstName, lastName, classYear);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Update_student")]
+		public int Update_student([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldStudentID", DbType="Int")] System.Nullable<int> oldStudentID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> newStudent_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(25)")] string newEmail, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string newFirstName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string newLastName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="SmallInt")] System.Nullable<short> newClassYear)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), oldStudentID, newStudent_ID, newEmail, newFirstName, newLastName, newClassYear);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.add_Student_to_Project")]
+		public int add_Student_to_Project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentID", DbType="Int")] System.Nullable<int> studentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), studentID, projectID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.add_user_Skills")]
+		public int add_user_Skills([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Student_ID", DbType="Int")] System.Nullable<int> student_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Skill_ID", DbType="Int")] System.Nullable<int> skill_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), student_ID, skill_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddProject_ExtResource")]
+		public int AddProject_ExtResource([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Resource_ID", DbType="Int")] System.Nullable<int> resource_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, resource_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddProject_ML_Part")]
+		public int AddProject_ML_Part([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLPart_ID", DbType="Int")] System.Nullable<int> mLPart_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, mLPart_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddProject_ML_TOOL")]
+		public int AddProject_ML_TOOL([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLTool_ID", DbType="Int")] System.Nullable<int> mLTool_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, mLTool_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.delete_Student_from_Project")]
+		public int delete_Student_from_Project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentID", DbType="Int")] System.Nullable<int> studentID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), studentID, projectID);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -264,18 +313,39 @@ namespace RoseMakerSpace
 			return ((ISingleResult<get_Active_projectsResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getStudentsByYear")]
-		public ISingleResult<getStudentsByYearResult> getStudentsByYear([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> gradYear)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gradYear);
-			return ((ISingleResult<getStudentsByYearResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_current_students")]
 		public ISingleResult<Get_current_studentsResult> Get_current_students()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Get_current_studentsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Project_details")]
+		public ISingleResult<get_Project_detailsResult> get_Project_details([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID);
+			return ((ISingleResult<get_Project_detailsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Project_Ext_Resources")]
+		public ISingleResult<get_Project_Ext_ResourcesResult> get_Project_Ext_Resources([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID);
+			return ((ISingleResult<get_Project_Ext_ResourcesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Project_MLParts")]
+		public ISingleResult<get_Project_MLPartsResult> get_Project_MLParts([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID);
+			return ((ISingleResult<get_Project_MLPartsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Project_MLTools")]
+		public ISingleResult<get_Project_MLToolsResult> get_Project_MLTools([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID);
+			return ((ISingleResult<get_Project_MLToolsResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_projects")]
@@ -285,11 +355,102 @@ namespace RoseMakerSpace
 			return ((ISingleResult<get_projectsResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_student")]
+		public ISingleResult<get_studentResult> get_student([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentID", DbType="Int")] System.Nullable<int> studentID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), studentID);
+			return ((ISingleResult<get_studentResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Student_ByEmail")]
+		public ISingleResult<get_Student_ByEmailResult> get_Student_ByEmail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(25)")] string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), email);
+			return ((ISingleResult<get_Student_ByEmailResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Student_likeAttr")]
+		public ISingleResult<get_Student_likeAttrResult> get_Student_likeAttr([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FirstName", DbType="NVarChar(MAX)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastName", DbType="NVarChar(MAX)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(25)")] string email)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, email);
+			return ((ISingleResult<get_Student_likeAttrResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Students_projects")]
+		public ISingleResult<get_Students_projectsResult> get_Students_projects([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentID", DbType="Int")] System.Nullable<int> studentID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), studentID);
+			return ((ISingleResult<get_Students_projectsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_Students_WorkingON_projects")]
+		public ISingleResult<get_Students_WorkingON_projectsResult> get_Students_WorkingON_projects([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), projectID);
+			return ((ISingleResult<get_Students_WorkingON_projectsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.get_user_Skills")]
+		public ISingleResult<get_user_SkillsResult> get_user_Skills([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Student_ID", DbType="Int")] System.Nullable<int> student_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), student_ID);
+			return ((ISingleResult<get_user_SkillsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.getStudentsByYear")]
+		public ISingleResult<getStudentsByYearResult> getStudentsByYear([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> gradYear)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), gradYear);
+			return ((ISingleResult<getStudentsByYearResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetTools_usedOn_Project")]
 		public ISingleResult<GetTools_usedOn_ProjectResult> GetTools_usedOn_Project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), projectID);
 			return ((ISingleResult<GetTools_usedOn_ProjectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.new_project")]
+		public int new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, description, image_Gallery, dateAdded, lastModified, aCTIVE);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.remove_Project_extResource")]
+		public int remove_Project_extResource([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Resource_ID", DbType="Int")] System.Nullable<int> resource_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, resource_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.remove_user_Skills")]
+		public int remove_user_Skills([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Student_ID", DbType="Int")] System.Nullable<int> student_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Skill_ID", DbType="Int")] System.Nullable<int> skill_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), student_ID, skill_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.removeProject_ML_PART")]
+		public int removeProject_ML_PART([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLPart_ID", DbType="Int")] System.Nullable<int> mLPart_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, mLPart_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.removeProject_ML_TOOL")]
+		public int removeProject_ML_TOOL([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Project_ID", DbType="Int")] System.Nullable<int> project_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="MLTool_ID", DbType="Int")] System.Nullable<int> mLTool_ID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), project_ID, mLTool_ID);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.update_Project")]
+		public int update_Project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProjectID", DbType="Int")] System.Nullable<int> projectID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(MAX)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Active", DbType="SmallInt")] System.Nullable<short> active)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), projectID, name, description, image_Gallery, dateAdded, lastModified, active);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -2435,7 +2596,7 @@ namespace RoseMakerSpace
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -2777,9 +2938,241 @@ namespace RoseMakerSpace
 		
 		private System.Nullable<System.DateTime> _LastModified;
 		
-		private System.Nullable<short> _Active;
+		private System.Nullable<short> _ACTIVE;
 		
 		public get_Active_projectsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image_Gallery", DbType="NVarChar(MAX)")]
+		public string Image_Gallery
+		{
+			get
+			{
+				return this._Image_Gallery;
+			}
+			set
+			{
+				if ((this._Image_Gallery != value))
+				{
+					this._Image_Gallery = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateAdded", DbType="Date")]
+		public System.Nullable<System.DateTime> DateAdded
+		{
+			get
+			{
+				return this._DateAdded;
+			}
+			set
+			{
+				if ((this._DateAdded != value))
+				{
+					this._DateAdded = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastModified", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastModified
+		{
+			get
+			{
+				return this._LastModified;
+			}
+			set
+			{
+				if ((this._LastModified != value))
+				{
+					this._LastModified = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ACTIVE", DbType="SmallInt")]
+		public System.Nullable<short> ACTIVE
+		{
+			get
+			{
+				return this._ACTIVE;
+			}
+			set
+			{
+				if ((this._ACTIVE != value))
+				{
+					this._ACTIVE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_current_studentsResult
+	{
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private int _StudentID;
+		
+		private string _Email;
+		
+		private System.Nullable<short> _ClassYear;
+		
+		public Get_current_studentsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
+		public System.Nullable<short> ClassYear
+		{
+			get
+			{
+				return this._ClassYear;
+			}
+			set
+			{
+				if ((this._ClassYear != value))
+				{
+					this._ClassYear = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Project_detailsResult
+	{
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private string _Image_Gallery;
+		
+		private System.Nullable<System.DateTime> _DateAdded;
+		
+		private System.Nullable<System.DateTime> _LastModified;
+		
+		private System.Nullable<short> _Active;
+		
+		public get_Project_detailsResult()
 		{
 		}
 		
@@ -2896,197 +3289,187 @@ namespace RoseMakerSpace
 		}
 	}
 	
-	public partial class getStudentsByYearResult
+	public partial class get_Project_Ext_ResourcesResult
 	{
 		
-		private string _FirstName;
+		private string _Name;
 		
-		private string _LastName;
+		private int _ID;
 		
-		private string _Email;
+		private int _FLAG;
 		
-		private int _StudentID;
-		
-		private System.Nullable<short> _ClassYear;
-		
-		public getStudentsByYearResult()
+		public get_Project_Ext_ResourcesResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FirstName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
 		{
 			get
 			{
-				return this._FirstName;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._FirstName != value))
+				if ((this._Name != value))
 				{
-					this._FirstName = value;
+					this._Name = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string LastName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
 		{
 			get
 			{
-				return this._LastName;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._LastName != value))
+				if ((this._ID != value))
 				{
-					this._LastName = value;
+					this._ID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
-		public string Email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG", DbType="Int NOT NULL")]
+		public int FLAG
 		{
 			get
 			{
-				return this._Email;
+				return this._FLAG;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((this._FLAG != value))
 				{
-					this._Email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
-		public int StudentID
-		{
-			get
-			{
-				return this._StudentID;
-			}
-			set
-			{
-				if ((this._StudentID != value))
-				{
-					this._StudentID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
-		public System.Nullable<short> ClassYear
-		{
-			get
-			{
-				return this._ClassYear;
-			}
-			set
-			{
-				if ((this._ClassYear != value))
-				{
-					this._ClassYear = value;
+					this._FLAG = value;
 				}
 			}
 		}
 	}
 	
-	public partial class Get_current_studentsResult
+	public partial class get_Project_MLPartsResult
 	{
 		
-		private string _FirstName;
+		private string _Name;
 		
-		private string _LastName;
+		private int _ID;
 		
-		private int _StudentID;
+		private int _FLAG;
 		
-		private string _Email;
-		
-		private System.Nullable<short> _ClassYear;
-		
-		public Get_current_studentsResult()
+		public get_Project_MLPartsResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string FirstName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
 		{
 			get
 			{
-				return this._FirstName;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._FirstName != value))
+				if ((this._Name != value))
 				{
-					this._FirstName = value;
+					this._Name = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string LastName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
 		{
 			get
 			{
-				return this._LastName;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._LastName != value))
+				if ((this._ID != value))
 				{
-					this._LastName = value;
+					this._ID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
-		public int StudentID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG", DbType="Int NOT NULL")]
+		public int FLAG
 		{
 			get
 			{
-				return this._StudentID;
+				return this._FLAG;
 			}
 			set
 			{
-				if ((this._StudentID != value))
+				if ((this._FLAG != value))
 				{
-					this._StudentID = value;
+					this._FLAG = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Project_MLToolsResult
+	{
+		
+		private string _Name;
+		
+		private int _ID;
+		
+		private int _FLAG;
+		
+		public get_Project_MLToolsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
-		public string Email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
 		{
 			get
 			{
-				return this._Email;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((this._ID != value))
 				{
-					this._Email = value;
+					this._ID = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
-		public System.Nullable<short> ClassYear
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG", DbType="Int NOT NULL")]
+		public int FLAG
 		{
 			get
 			{
-				return this._ClassYear;
+				return this._FLAG;
 			}
 			set
 			{
-				if ((this._ClassYear != value))
+				if ((this._FLAG != value))
 				{
-					this._ClassYear = value;
+					this._FLAG = value;
 				}
 			}
 		}
@@ -3221,6 +3604,566 @@ namespace RoseMakerSpace
 				if ((this._ACTIVE != value))
 				{
 					this._ACTIVE = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_studentResult
+	{
+		
+		private int _StudentID;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private System.Nullable<short> _ClassYear;
+		
+		public get_studentResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
+		public System.Nullable<short> ClassYear
+		{
+			get
+			{
+				return this._ClassYear;
+			}
+			set
+			{
+				if ((this._ClassYear != value))
+				{
+					this._ClassYear = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Student_ByEmailResult
+	{
+		
+		private int _StudentID;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private System.Nullable<short> _ClassYear;
+		
+		public get_Student_ByEmailResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
+		public System.Nullable<short> ClassYear
+		{
+			get
+			{
+				return this._ClassYear;
+			}
+			set
+			{
+				if ((this._ClassYear != value))
+				{
+					this._ClassYear = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Student_likeAttrResult
+	{
+		
+		private int _StudentID;
+		
+		private string _Email;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private System.Nullable<short> _ClassYear;
+		
+		public get_Student_likeAttrResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
+		public System.Nullable<short> ClassYear
+		{
+			get
+			{
+				return this._ClassYear;
+			}
+			set
+			{
+				if ((this._ClassYear != value))
+				{
+					this._ClassYear = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Students_projectsResult
+	{
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private System.Nullable<short> _Active;
+		
+		public get_Students_projectsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="SmallInt")]
+		public System.Nullable<short> Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this._Active = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_Students_WorkingON_projectsResult
+	{
+		
+		private int _StudentID;
+		
+		private string _NAME;
+		
+		public get_Students_WorkingON_projectsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string NAME
+		{
+			get
+			{
+				return this._NAME;
+			}
+			set
+			{
+				if ((this._NAME != value))
+				{
+					this._NAME = value;
+				}
+			}
+		}
+	}
+	
+	public partial class get_user_SkillsResult
+	{
+		
+		private string _Name;
+		
+		private int _ID;
+		
+		private int _FLAG;
+		
+		public get_user_SkillsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG", DbType="Int NOT NULL")]
+		public int FLAG
+		{
+			get
+			{
+				return this._FLAG;
+			}
+			set
+			{
+				if ((this._FLAG != value))
+				{
+					this._FLAG = value;
+				}
+			}
+		}
+	}
+	
+	public partial class getStudentsByYearResult
+	{
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Email;
+		
+		private int _StudentID;
+		
+		private System.Nullable<short> _ClassYear;
+		
+		public getStudentsByYearResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(25) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentID", DbType="Int NOT NULL")]
+		public int StudentID
+		{
+			get
+			{
+				return this._StudentID;
+			}
+			set
+			{
+				if ((this._StudentID != value))
+				{
+					this._StudentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassYear", DbType="SmallInt")]
+		public System.Nullable<short> ClassYear
+		{
+			get
+			{
+				return this._ClassYear;
+			}
+			set
+			{
+				if ((this._ClassYear != value))
+				{
+					this._ClassYear = value;
 				}
 			}
 		}

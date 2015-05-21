@@ -1,0 +1,36 @@
+﻿@model RoseMakerSpace.Models.AddStudentModel
+@{
+    ViewBag.Title = "AddRemStudents";
+}
+
+<h2>Add/Remove Students</h2>
+
+@using (Html.BeginForm("AddStudent", "Project", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.StudentName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <input class="btn btn-default" name="btnSubmit" value="Submit" type="submit" />
+}
+<br />
+<br />
+<table class="col-lg-4 table table-striped">
+    <thead>
+        <tr>
+            <td>Students On Project</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.studentsOnProject)
+        {
+            <tr>
+                <td>@student.NAME</td>
+                <td>@Html.ActionLink("Remove", "RemStudent", new { studentID = student.StudentID, projectID = Model.projectID })</td>
+            </tr>
+        }
+    </tbody>
+</table>

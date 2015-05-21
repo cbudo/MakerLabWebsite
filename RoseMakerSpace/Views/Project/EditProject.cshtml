@@ -1,0 +1,126 @@
+﻿@model RoseMakerSpace.Models.ProjectModel
+
+@{
+    ViewBag.Title = "EditProject";
+}
+
+<h2>EditProject</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Project</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.project.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.project.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.project.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.project.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.project.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.project.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.project.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.project.Image_Gallery, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.project.Image_Gallery, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.project.Image_Gallery, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Save" class="btn btn-default" name="btnSubmit" />
+            </div>
+            @Html.ActionLink("Add/Remove Student ", "AddRemStudents", new { ProjectID = Model.projectID }, new { @class = "btn btn-default" })
+        </div>
+        <br /><br />
+    </div>
+}
+@using (Html.BeginForm("ProjectParts", "Project", FormMethod.Post))
+{
+    <h2>Parts used:</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>MakerLab Parts</h3>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>MakerLab Parts available</h4>
+                @Html.ListBoxFor(m => m.Project_MLParts.selectedMLParts, Model.Project_MLParts.MLParts, new { @class = "col-lg-12" })
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6" style="text-align:center;">
+                <br /><br />
+                <input type="submit" value="Add  MLPart >>" name="btnSubmit" />
+                <br /><br />
+                <input type="submit" value="<< Remove ML Part" name="btnSubmit" />
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>MakerLab Parts Used</h4>
+                @Html.ListBoxFor(m => m.Project_MLParts.selectedMLPartsToRemove, Model.Project_MLParts.CurrentMLParts, new { @class = "col-lg-12" })
+            </div>
+            <br /><br />
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>MakerLab Tools</h3>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>MakerLab Tools available</h4>
+                @Html.ListBoxFor(m => m.Project_MLTools.selectedMLTools, Model.Project_MLTools.MLTools, new { @class = "col-lg-12" })
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6" style="text-align:center;">
+                <br /><br />
+                <input type="submit" value="Add ML Tool >>" name="btnSubmit" />
+                <br /><br />
+                <input type="submit" value="<< Remove ML Tool" name="btnSubmit" />
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>MakerLab Tools Used</h4>
+                @Html.ListBoxFor(m => m.Project_MLTools.selectedMLToolsToRemove, Model.Project_MLTools.CurrentMLTools, new { @class = "col-lg-12" })
+            </div>
+            <br /><br />
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>External Resources</h3>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>External Resources available</h4>
+                @Html.ListBoxFor(m => m.projectRels.selectedExtResources, Model.projectRels.ExtResources, new { @class = "col-lg-12" })
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6" style="text-align:center;">
+                <br /><br />
+                <input type="submit" value="Add Resource >>" name="btnSubmit" />
+                <br /><br />
+                <input type="submit" value="<< Remove Resource" name="btnSubmit" />
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4>Used External Resources</h4>
+                @Html.ListBoxFor(m => m.projectRels.selectedExtResourcesToRemove, Model.projectRels.CurrentExtResources, new { @class = "col-lg-12" })
+            </div>
+            <br /><br />
+        </div>
+    </div>
+}
+
+       
+
+<div>
+    @Html.ActionLink("Back to Projects", "Index")
+</div>

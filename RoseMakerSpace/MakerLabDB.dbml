@@ -149,7 +149,7 @@
   </Table>
   <Table Name="dbo.Skill" Member="Skills">
     <Type Name="Skill">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Skill_Student_Skill" Member="Student_Skills" ThisKey="ID" OtherKey="Student_Skill1" Type="Student_Skill" />
     </Type>
@@ -184,13 +184,51 @@
       <Association Name="Skill_Student_Skill" Member="Skill" ThisKey="Student_Skill1" OtherKey="ID" Type="Skill" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.new_project" Method="new_project">
-    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
-    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="Image_Gallery" Parameter="image_Gallery" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="DateAdded" Parameter="dateAdded" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="LastModified" Parameter="lastModified" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="ACTIVE" Parameter="aCTIVE" Type="System.Int16" DbType="SmallInt" />
+  <Function Name="dbo.add_student" Method="add_student">
+    <Parameter Name="Student_ID" Parameter="student_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ClassYear" Parameter="classYear" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Update_student" Method="Update_student">
+    <Parameter Name="OldStudentID" Parameter="oldStudentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="newStudent_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="newEmail" Type="System.String" DbType="NVarChar(25)" />
+    <Parameter Name="newFirstName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="newLastName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="newClassYear" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.add_Student_to_Project" Method="add_Student_to_Project">
+    <Parameter Name="StudentID" Parameter="studentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.add_user_Skills" Method="add_user_Skills">
+    <Parameter Name="Student_ID" Parameter="student_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Skill_ID" Parameter="skill_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddProject_ExtResource" Method="AddProject_ExtResource">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Resource_ID" Parameter="resource_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddProject_ML_Part" Method="AddProject_ML_Part">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MLPart_ID" Parameter="mLPart_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddProject_ML_TOOL" Method="AddProject_ML_TOOL">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MLTool_ID" Parameter="mLTool_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.delete_Student_from_Project" Method="delete_Student_from_Project">
+    <Parameter Name="StudentID" Parameter="studentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.get_Active_projects" Method="get_Active_projects">
@@ -201,17 +239,7 @@
       <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DateAdded" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Active" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.getStudentsByYear" Method="getStudentsByYear">
-    <Parameter Name="gradYear" Type="System.Int32" DbType="Int" />
-    <ElementType Name="getStudentsByYearResult">
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
-      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ACTIVE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.Get_current_students" Method="Get_current_students">
@@ -221,6 +249,42 @@
       <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Project_details" Method="get_Project_details">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Project_detailsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Image_Gallery" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Active" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Project_Ext_Resources" Method="get_Project_Ext_Resources">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Project_Ext_ResourcesResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Project_MLParts" Method="get_Project_MLParts">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Project_MLPartsResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Project_MLTools" Method="get_Project_MLTools">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Project_MLToolsResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.get_projects" Method="get_projects">
@@ -238,6 +302,71 @@
       <Column Name="ACTIVE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.get_student" Method="get_student">
+    <Parameter Name="StudentID" Parameter="studentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_studentResult">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Student_ByEmail" Method="get_Student_ByEmail">
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(25)" />
+    <ElementType Name="get_Student_ByEmailResult">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Student_likeAttr" Method="get_Student_likeAttr">
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(25)" />
+    <ElementType Name="get_Student_likeAttrResult">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Students_projects" Method="get_Students_projects">
+    <Parameter Name="StudentID" Parameter="studentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Students_projectsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_Students_WorkingON_projects" Method="get_Students_WorkingON_projects">
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_Students_WorkingON_projectsResult">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.get_user_Skills" Method="get_user_Skills">
+    <Parameter Name="Student_ID" Parameter="student_ID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="get_user_SkillsResult">
+      <Column Name="Name" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLAG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getStudentsByYear" Method="getStudentsByYear">
+    <Parameter Name="gradYear" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getStudentsByYearResult">
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClassYear" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.GetTools_usedOn_Project" Method="GetTools_usedOn_Project">
     <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetTools_usedOn_ProjectResult">
@@ -247,5 +376,44 @@
       <Column Name="MLTool_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Project_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.new_project" Method="new_project">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Image_Gallery" Parameter="image_Gallery" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="DateAdded" Parameter="dateAdded" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LastModified" Parameter="lastModified" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ACTIVE" Parameter="aCTIVE" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.remove_Project_extResource" Method="remove_Project_extResource">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Resource_ID" Parameter="resource_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.remove_user_Skills" Method="remove_user_Skills">
+    <Parameter Name="Student_ID" Parameter="student_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Skill_ID" Parameter="skill_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.removeProject_ML_PART" Method="removeProject_ML_PART">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MLPart_ID" Parameter="mLPart_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.removeProject_ML_TOOL" Method="removeProject_ML_TOOL">
+    <Parameter Name="Project_ID" Parameter="project_ID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MLTool_ID" Parameter="mLTool_ID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.update_Project" Method="update_Project">
+    <Parameter Name="ProjectID" Parameter="projectID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Image_Gallery" Parameter="image_Gallery" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="DateAdded" Parameter="dateAdded" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="LastModified" Parameter="lastModified" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Active" Parameter="active" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

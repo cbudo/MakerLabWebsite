@@ -11,13 +11,23 @@ CREATE PROCEDURE new_project
  @Image_Gallery NVARCHAR(MAX) = NULL,
  @DateAdded DATE = NULL,
  @LastModified DATETIME = NULL,
- @ACTIVE SMALLINT = 1)
+ @ACTIVE SMALLINT = 1,
+ @StudentID INT)
 
 AS
 SET NOCOUNT ON
 
 INSERT INTO [PROJECT] ([Name], [Description], [Image_Gallery], [DateAdded], [LastModified], [ACTIVE])
 	VALUES (@Name, @Description, @Image_Gallery, @DateAdded, @LastModified, @ACTIVE)
+
+DECLARE @ProjectID INT;
+SELECT TOP 1 @ProjectID = ID FROM Project ORDER BY ID DESC
+
+
+INSERT INTO Student_Project (Student_ID, Project_ID)
+Values (@StudentID, @ProjectID)
+
+
 	
 
 --ERROR Stuff

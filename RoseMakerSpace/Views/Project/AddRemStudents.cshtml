@@ -7,10 +7,11 @@
 
 @using (Html.BeginForm("AddStudent", "Project", FormMethod.Post))
 {
+    @Html.HiddenFor(m=>m.projectID)
     <div class="form-group">
-        @Html.LabelFor(m => m.StudentName, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.StudentEmail, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.StudentName, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.StudentEmail, new { @class = "form-control" })
         </div>
     </div>
     <br />

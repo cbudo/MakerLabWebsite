@@ -106,14 +106,6 @@ namespace RoseMakerSpace
 			}
 		}
 		
-		public System.Data.Linq.Table<Student_Training> Student_Trainings
-		{
-			get
-			{
-				return this.GetTable<Student_Training>();
-			}
-		}
-		
 		public System.Data.Linq.Table<AspNetRole> AspNetRoles
 		{
 			get
@@ -247,6 +239,14 @@ namespace RoseMakerSpace
 			get
 			{
 				return this.GetTable<Student_Skill>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Student_Training> Student_Trainings
+		{
+			get
+			{
+				return this.GetTable<Student_Training>();
 			}
 		}
 		
@@ -412,10 +412,10 @@ namespace RoseMakerSpace
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.new_project")]
-		public int new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE)
+		public ISingleResult<new_projectResult> new_project([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Description", DbType="NVarChar(MAX)")] string description, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Image_Gallery", DbType="NVarChar(MAX)")] string image_Gallery, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateAdded", DbType="Date")] System.Nullable<System.DateTime> dateAdded, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="LastModified", DbType="DateTime")] System.Nullable<System.DateTime> lastModified, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ACTIVE", DbType="SmallInt")] System.Nullable<short> aCTIVE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StudentID", DbType="Int")] System.Nullable<int> studentID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, description, image_Gallery, dateAdded, lastModified, aCTIVE);
-			return ((int)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), name, description, image_Gallery, dateAdded, lastModified, aCTIVE, studentID);
+			return ((ISingleResult<new_projectResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.remove_Project_extResource")]
@@ -584,69 +584,6 @@ namespace RoseMakerSpace
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student_Training")]
-	public partial class Student_Training
-	{
-		
-		private System.Nullable<int> _Student_ID;
-		
-		private System.Nullable<int> _MakerLab_Tool_ID;
-		
-		private string _Student_Training1;
-		
-		public Student_Training()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int")]
-		public System.Nullable<int> Student_ID
-		{
-			get
-			{
-				return this._Student_ID;
-			}
-			set
-			{
-				if ((this._Student_ID != value))
-				{
-					this._Student_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MakerLab_Tool_ID", DbType="Int")]
-		public System.Nullable<int> MakerLab_Tool_ID
-		{
-			get
-			{
-				return this._MakerLab_Tool_ID;
-			}
-			set
-			{
-				if ((this._MakerLab_Tool_ID != value))
-				{
-					this._MakerLab_Tool_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Student_Training", Storage="_Student_Training1", DbType="Char(30)")]
-		public string Student_Training1
-		{
-			get
-			{
-				return this._Student_Training1;
-			}
-			set
-			{
-				if ((this._Student_Training1 != value))
-				{
-					this._Student_Training1 = value;
-				}
 			}
 		}
 	}
@@ -1297,6 +1234,8 @@ namespace RoseMakerSpace
 		
 		private EntitySet<AspNetUserRole> _AspNetUserRoles;
 		
+		private EntityRef<Student> _Student;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1334,6 +1273,7 @@ namespace RoseMakerSpace
 			this._AspNetUserClaims = new EntitySet<AspNetUserClaim>(new Action<AspNetUserClaim>(this.attach_AspNetUserClaims), new Action<AspNetUserClaim>(this.detach_AspNetUserClaims));
 			this._AspNetUserLogins = new EntitySet<AspNetUserLogin>(new Action<AspNetUserLogin>(this.attach_AspNetUserLogins), new Action<AspNetUserLogin>(this.detach_AspNetUserLogins));
 			this._AspNetUserRoles = new EntitySet<AspNetUserRole>(new Action<AspNetUserRole>(this.attach_AspNetUserRoles), new Action<AspNetUserRole>(this.detach_AspNetUserRoles));
+			this._Student = default(EntityRef<Student>);
 			OnCreated();
 		}
 		
@@ -1588,6 +1528,10 @@ namespace RoseMakerSpace
 			{
 				if ((this._StudentIDFK != value))
 				{
+					if (this._Student.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnStudentIDFKChanging(value);
 					this.SendPropertyChanging();
 					this._StudentIDFK = value;
@@ -1633,6 +1577,40 @@ namespace RoseMakerSpace
 			set
 			{
 				this._AspNetUserRoles.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_AspNetUser", Storage="_Student", ThisKey="StudentIDFK", OtherKey="StudentID", IsForeignKey=true)]
+		public Student Student
+		{
+			get
+			{
+				return this._Student.Entity;
+			}
+			set
+			{
+				Student previousValue = this._Student.Entity;
+				if (((previousValue != value) 
+							|| (this._Student.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student.Entity = null;
+						previousValue.AspNetUsers.Remove(this);
+					}
+					this._Student.Entity = value;
+					if ((value != null))
+					{
+						value.AspNetUsers.Add(this);
+						this._StudentIDFK = value.StudentID;
+					}
+					else
+					{
+						this._StudentIDFK = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Student");
+				}
 			}
 		}
 		
@@ -1734,7 +1712,7 @@ namespace RoseMakerSpace
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -1979,7 +1957,7 @@ namespace RoseMakerSpace
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -2149,7 +2127,7 @@ namespace RoseMakerSpace
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID
 		{
 			get
@@ -2673,6 +2651,8 @@ namespace RoseMakerSpace
 		
 		private System.Nullable<short> _ClassYear;
 		
+		private EntitySet<AspNetUser> _AspNetUsers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2691,6 +2671,7 @@ namespace RoseMakerSpace
 		
 		public Student()
 		{
+			this._AspNetUsers = new EntitySet<AspNetUser>(new Action<AspNetUser>(this.attach_AspNetUsers), new Action<AspNetUser>(this.detach_AspNetUsers));
 			OnCreated();
 		}
 		
@@ -2794,6 +2775,19 @@ namespace RoseMakerSpace
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_AspNetUser", Storage="_AspNetUsers", ThisKey="StudentID", OtherKey="StudentIDFK")]
+		public EntitySet<AspNetUser> AspNetUsers
+		{
+			get
+			{
+				return this._AspNetUsers;
+			}
+			set
+			{
+				this._AspNetUsers.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2812,6 +2806,18 @@ namespace RoseMakerSpace
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_AspNetUsers(AspNetUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = this;
+		}
+		
+		private void detach_AspNetUsers(AspNetUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = null;
 		}
 	}
 	
@@ -2918,6 +2924,69 @@ namespace RoseMakerSpace
 				if ((this._Student_Skill1 != value))
 				{
 					this._Student_Skill1 = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student_Training")]
+	public partial class Student_Training
+	{
+		
+		private System.Nullable<int> _Student_ID;
+		
+		private System.Nullable<int> _MakerLab_Tool_ID;
+		
+		private string _Student_Training1;
+		
+		public Student_Training()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Student_ID", DbType="Int")]
+		public System.Nullable<int> Student_ID
+		{
+			get
+			{
+				return this._Student_ID;
+			}
+			set
+			{
+				if ((this._Student_ID != value))
+				{
+					this._Student_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MakerLab_Tool_ID", DbType="Int")]
+		public System.Nullable<int> MakerLab_Tool_ID
+		{
+			get
+			{
+				return this._MakerLab_Tool_ID;
+			}
+			set
+			{
+				if ((this._MakerLab_Tool_ID != value))
+				{
+					this._MakerLab_Tool_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Student_Training", Storage="_Student_Training1", DbType="Char(30)")]
+		public string Student_Training1
+		{
+			get
+			{
+				return this._Student_Training1;
+			}
+			set
+			{
+				if ((this._Student_Training1 != value))
+				{
+					this._Student_Training1 = value;
 				}
 			}
 		}
@@ -4262,6 +4331,32 @@ namespace RoseMakerSpace
 				if ((this._Project_ID != value))
 				{
 					this._Project_ID = value;
+				}
+			}
+		}
+	}
+	
+	public partial class new_projectResult
+	{
+		
+		private int _ID;
+		
+		public new_projectResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Linq;
 using System.Linq;
 using System.Web;
@@ -50,7 +51,8 @@ namespace RoseMakerSpace.Models
     public class AddStudentModel
     {
         public int projectID { get; set; }
-        public string StudentName { get; set; }
+        [Display(Name="Student Email")]
+        public string StudentEmail { get; set; }
         public IEnumerable<get_Students_WorkingON_projectsResult> studentsOnProject { get; set; }
     }
 }

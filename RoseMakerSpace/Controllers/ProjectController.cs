@@ -38,10 +38,10 @@ namespace RoseMakerSpace.Controllers
             project.DateAdded = DateTime.Now.Date;
 
             project.LastModified = DateTime.Now;
-            db.new_project(project.Name, project.Description, project.Image_Gallery, DateTime.Now, DateTime.Now, 1);
+            var student = db.get_Student_ByEmail(User.Identity.Name).FirstOrDefault();
+            db.new_project(project.Name, project.Description, project.Image_Gallery, DateTime.Now, DateTime.Now, 1,student.StudentID);
             db.SubmitChanges();
-            var projects = db.get_Active_projects();
-            return View("Index", projects);
+            return RedirectToAction("Index");
         }
         public ActionResult Details(int id)
         {
@@ -127,7 +127,7 @@ namespace RoseMakerSpace.Controllers
             // call update project SPROC
             db.update_Project(model.projectID, model.project.Name, model.project.Description, model.project.Image_Gallery, model.project.DateAdded, DateTime.Now, model.project.Active);
             // return to project's profile page
-            return RedirectToAction("EditProject");
+            return RedirectToAction("EditProject", new { id = model.projectID });
         }
         [HttpPost]
         public ActionResult ProjectParts(ProjectModel model, string btnSubmit)
@@ -155,7 +155,7 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Add Error", "You must select a MakerLab Part to be added");
                     }
-                    return RedirectToAction("EditProject");
+                    return RedirectToAction("EditProject", new { id = model.projectID });
                 case "<< Remove ML Part":
                     // rearrange lists and return to edit project page
                     try
@@ -169,12 +169,12 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Remove Error", "You must select a MakerLab Part to be Removed");
                     }
-                    return RedirectToAction("EditProject");
-                case "Add  ML Tool >>":
+                    return RedirectToAction("EditProject", new { id = model.projectID });
+                case "Add ML Tool >>":
                     // rearrange lists and return to edit project page
                     try
                     {
-                        foreach (var skill in model.Project_MLParts.selectedMLParts)
+                        foreach (var skill in model.Project_MLTools.selectedMLTools)
                         {
                             db.AddProject_ML_TOOL(model.projectID, Convert.ToInt32(skill));
                         }
@@ -183,12 +183,12 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Add Error", "You must select a MakerLab Tool to be added");
                     }
-                    return RedirectToAction("EditProject");
+                    return RedirectToAction("EditProject", new { id = model.projectID });
                 case "<< Remove ML Tool":
                     // rearrange lists and return to edit project page
                     try
                     {
-                        foreach (var skill in model.Project_MLParts.selectedMLPartsToRemove)
+                        foreach (var skill in model.Project_MLTools.selectedMLToolsToRemove)
                         {
                             db.removeProject_ML_TOOL(model.projectID, Convert.ToInt32(skill));
                         }
@@ -197,12 +197,12 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Remove Error", "You must select a MakerLab Tool to be Removed");
                     }
-                    return RedirectToAction("EditProject");
+                    return RedirectToAction("EditProject", new { id = model.projectID });
                 case "Add Resource >>":
                     // rearrange lists and return to edit project page
                     try
                     {
-                        foreach (var skill in model.Project_MLParts.selectedMLParts)
+                        foreach (var skill in model.projectRels.selectedExtResources)
                         {
                             db.AddProject_ExtResource(model.projectID, Convert.ToInt32(skill));
                         }
@@ -211,12 +211,12 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Add Error", "You must select an extRec to be added");
                     }
-                    return RedirectToAction("EditProject");
+                    return RedirectToAction("EditProject", new { id = model.projectID });
                 case "<< Remove Resource":
                     // rearrange lists and return to edit project page
                     try
                     {
-                        foreach (var skill in model.Project_MLParts.selectedMLPartsToRemove)
+                        foreach (var skill in model.projectRels.selectedExtResourcesToRemove)
                         {
                             db.remove_Project_extResource(model.projectID, Convert.ToInt32(skill));
                         }
@@ -225,11 +225,11 @@ namespace RoseMakerSpace.Controllers
                     {
                         ModelState.AddModelError("Remove Error", "You must select an extRec to be Removed");
                     }
-                    return RedirectToAction("EditProject");
+                    return RedirectToAction("EditProject", new { id = model.projectID });
                 default:
                     break;
             }
-            return RedirectToAction("EditProject");
+            return RedirectToAction("EditProject", new { id = model.projectID });
         }
         public ActionResult AddRemStudents(int? ProjectID)
         {
@@ -274,7 +274,7 @@ namespace RoseMakerSpace.Controllers
             }
             try
             {
-                var student = db.get_Student_ByEmail(model.StudentName).FirstOrDefault();
+                var student = db.get_Student_ByEmail(model.StudentEmail).FirstOrDefault();
 
                 db.add_Student_to_Project(student.StudentID, model.projectID);
                 return RedirectToAction("AddRemStudents", new { ProjectID = model.projectID });

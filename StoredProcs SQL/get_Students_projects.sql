@@ -1,8 +1,5 @@
 USE [333_MakerLab];
 
---Remove an existing external resource from a project
---Params:Project_ID,Resource_ID
-
 IF OBJECT_ID('[dbo].[get_Students_projects]') IS not NULL
     DROP PROCEDURE [dbo].get_Students_projects
 GO

@@ -17,6 +17,12 @@ CREATE PROCEDURE new_project
 AS
 SET NOCOUNT ON
 
+IF (SELECT COUNT(StudentID) FROM Student WHERE  StudentID= @StudentID) = 0
+BEGIN 
+	PRINT 'The student '  + CONVERT(varchar(30), @StudentID ) + '  does not exist '
+RETURN 1
+END
+
 INSERT INTO [PROJECT] ([Name], [Description], [Image_Gallery], [DateAdded], [LastModified], [ACTIVE])
 	VALUES (@Name, @Description, @Image_Gallery, @DateAdded, @LastModified, @ACTIVE)
 
@@ -27,7 +33,7 @@ SELECT TOP 1 @ProjectID = ID FROM Project ORDER BY ID DESC
 INSERT INTO Student_Project (Student_ID, Project_ID)
 Values (@StudentID, @ProjectID)
 
-
+SELECT TOP 1 ID FROM Project ORDER BY ID DESC
 	
 
 --ERROR Stuff
